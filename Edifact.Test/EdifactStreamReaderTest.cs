@@ -12,19 +12,7 @@ namespace Edifact.Test
   [TestClass]
   public class EdifactStreamReaderTest
   {
-    public const string TestDataFolderName = "TestData";
-
-    public string Folder { get { return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location); } }
-
-    public string TestDataFolder { get { return Path.Combine(this.Folder, TestDataFolderName); } }
-
-    public const string SampleFileName = "Sample.edi";
-    public const string SampleFile2Name = "Sample2.edi";
-
-    public string GetTestFilePath(string fileName = SampleFileName)
-    {
-      return Path.Combine(TestDataFolder, fileName);
-    }
+  
 
     [TestMethod]
     public void EdifactStreamReaderTest_Ctor()
@@ -36,7 +24,7 @@ namespace Edifact.Test
     public void EdifactStreamReaderTest_Read_UNA()
     {
       var reader = new EdifactStreamReader();
-      using (var sr = File.OpenText(GetTestFilePath()))
+      using (var sr = File.OpenText(TestData.GetTestFilePath()))
       {
         var model = reader.Read(sr);
 
@@ -52,7 +40,7 @@ namespace Edifact.Test
     public void EdifactStreamReaderTest_Read_All()
     {
       var reader = new EdifactStreamReader();
-      using (var sr = File.OpenText(GetTestFilePath()))
+      using (var sr = File.OpenText(TestData.GetTestFilePath()))
       {
         var model = reader.Read(sr);
         Assert.AreEqual<int>(15, model.Segments.Count);
@@ -108,7 +96,7 @@ namespace Edifact.Test
     public void EdifactStreamReaderTest_Read_All2()
     {
       var reader = new EdifactStreamReader();
-      using (var sr = File.OpenText(GetTestFilePath(SampleFile2Name)))
+      using (var sr = File.OpenText(TestData.GetTestFilePath(TestData.SampleFile2Name)))
       {
         var model = reader.Read(sr);
         Assert.AreEqual<int>(15, model.Segments.Count);
