@@ -15,6 +15,18 @@ namespace Edifact
       this.Settings = new EdifactParseSettings();
     }
 
+    private void WriteHeader(TextWriter writer, EdifactParseSettings settings)
+    {
+      writer.Write("UNA{0}{1}{2}{3}{4}{5}",
+        settings.ComponentDataElementSeparator,
+        settings.SegmentTagDataElementSeparator,
+        settings.DecimalNotification,
+        settings.ReleaseCharacter,
+        ' ' /* reserved */,
+        settings.SegmentTerminator
+        );
+    }
+
     public void Write(EdifactModel model, TextWriter writer)
     {
       Write(model, writer, this.Settings);
@@ -37,6 +49,9 @@ namespace Edifact
 
     public void Write(EdifactModel model, TextWriter writer, EdifactParseSettings settings)
     {
+      /* first write the header */
+      WriteHeader(writer, settings);
+
       char[] specialChars = settings.GetSpecialChars();
 
       /* write the segments */
