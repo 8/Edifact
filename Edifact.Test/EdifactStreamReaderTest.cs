@@ -57,21 +57,50 @@ namespace Edifact.Test
         var model = reader.Read(sr);
         Assert.AreEqual<int>(15, model.Segments.Count);
         int i = 0;
-        Assert.AreEqual<string>("UNB", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("UNH", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("MSG", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("IFT", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("ERC", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("IFT", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("ODI", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("TVL", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("PDI", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("APD", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("TVL", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("PDI", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("APD", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("UNT", model.Segments[i++].SegmentType);
-        Assert.AreEqual<string>("UNZ", model.Segments[i++].SegmentType);
+        Assert.AreEqual<string>("UNB", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(5, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("UNH", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(2, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("MSG", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(1, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("IFT", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(2, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("ERC", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(1, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("IFT", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(2, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("ODI", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(0, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("TVL", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(6, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("PDI", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(4, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("APD", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(7, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("TVL", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(6, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("PDI", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(2, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("APD", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(8, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("UNT", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(2, model.Segments[i++].DataElements.Count);
+
+        Assert.AreEqual<string>("UNZ", model.Segments[i].SegmentType);
+        Assert.AreEqual<int>(2, model.Segments[i++].DataElements.Count);
       }
     }
 
